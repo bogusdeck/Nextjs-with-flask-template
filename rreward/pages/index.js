@@ -1,32 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 
-function Home() {
-  const [message, setMessage] = useState('');
+const Home = () => {
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
-    fetch('/api/message') // Assuming Flask API endpoint
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message))
-      .catch((error) => console.log(error));
-  }, []);from flask import Flask
-
-  app = Flask(__name__)
-
-  @app.route('/')
-  def index():
-      return 'Hello, Flask!'
-
-  if __name__ == '__main__':
-      app.run(debug=True)
-
+    fetch("http://localhost:5000/api/hello")
+      .then((response) => response.json())
+      .then((data) => setMessage(data.message));
+  }, []);
 
   return (
     <div>
-      <h1>Hello, Next.js!</h1>
-      <p>Message from Flask: {message}</p>
+      <h1> next chl rhi hai </h1>
+      <h1>{message}</h1>
+      <Link href="/input">INPUT</Link>
     </div>
   );
-}
+};
 
 export default Home;
 
+
+//output.js
